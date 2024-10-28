@@ -1,7 +1,7 @@
 package com.ssafy.sandbox.controller;
 
 
-import com.ssafy.sandbox.mapper.Todo;
+import com.ssafy.sandbox.dto.TodoDto;
 import com.ssafy.sandbox.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,41 +21,29 @@ public class TodoController {
     private TodoService todoService;
 
     @GetMapping
-    public ResponseEntity<Map<String, List<Todo>>> getTodos() {
-        System.out.println("handle getTodos");
-        List<Todo> todos = todoService.getAllTodos();
-
-        //형식에 맞춰 감싸기
-        Map<String, List<Todo>> response = new HashMap<>();
-        response.put("todos", todos);
-
+    public ResponseEntity<Map<String, List<TodoDto>>> getTodos() {
+        List<TodoDto> todoDtos = todoService.getAllTodos();
+        Map<String, List<TodoDto>> response = new HashMap<>();
+        response.put("todos", todoDtos);
         return ResponseEntity.ok(response);
     }
     @PostMapping
-    public ResponseEntity<Todo> createTodo(@RequestBody Todo newTodo) {
-        System.out.println("handle posttodos");
-        newTodo.setCompleted(false); // 기본값 설정
-        newTodo.setCreatedAt(LocalDateTime.now().toString()); // 현재 시간 설정
-        newTodo.setUserId(1); // 사용자 ID 설정 (예시)
-
-        Todo savedTodo = todoService.postTodos(newTodo); // 서비스에서 저장 메서드 호출
-        System.out.println(savedTodo);
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedTodo); // 저장된 Todo 반환
+    public ResponseEntity<TodoDto> createTodo(@RequestBody TodoDto newTodoDto) {
+        newTodoDto.setCompleted(false); // 기본값 설정
+        newTodoDto.setCreatedAt(LocalDateTime.now().toString()); // 현재 시간 설정
+        newTodoDto.setUserId(1); // 사용자 ID 설정 (예시)
+        TodoDto savedTodoDto = todoService.createTodos(newTodoDto); // 서비스에서 저장 메서드 호출//content와 필드명 일치해서 이미들어가있음
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedTodoDto); // 저장된 TodoDto 반환
     }
     @PatchMapping("/{todoId}")
-    public ResponseEntity<Map<String, Boolean>> updateTodoPatch(
-            @PathVariable int todoId
-            ) {
-        System.out.println("handle patch");
-        todoService.updateTodo(todoId); // 서비스 메서드 호출
+    public ResponseEntity<Map<String, Boolean>> toggleTodo(@PathVariable int todoId) {
+        todoService.toggleTodo(todoId); // 서비스 메서드 호출
         Map<String, Boolean> update = new HashMap<>();
-        update.put("complete", new Boolean(true));
+        update.put("complete", Boolean.TRUE);
         return ResponseEntity.ok().body(update);
     }
     @DeleteMapping("/{todoID}")
-    public ResponseEntity<Void> deleteTodo( @PathVariable int todoID
-    ) {
-        System.out.println("delete path");
+    public ResponseEntity<Void> deleteTodo( @PathVariable int todoID) {
         todoService.deleteTodo(todoID);
         return ResponseEntity.ok().build();
     }

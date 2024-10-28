@@ -1,15 +1,12 @@
-package com.ssafy.sandbox.mapper;
+package com.ssafy.sandbox.dto;
 
 import jakarta.persistence.*;
-import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 @Entity
 @Table(name="todos")
 @Data
-public class Todo {
+public class TodoDto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +20,7 @@ public class Todo {
     @Column(name = "user_id")
     int userId;
 
-    public Todo() {
+    public TodoDto() {
 
     }
 }
