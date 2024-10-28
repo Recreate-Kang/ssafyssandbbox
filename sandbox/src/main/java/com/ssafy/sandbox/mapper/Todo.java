@@ -7,20 +7,20 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Getter
-@Setter
+@Table(name="todos")
+@Data
 public class Todo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
     @Column
     String content;
     @Column
     boolean completed;
-    @Column
+    @Column(name = "created_at", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     String createdAt;
-    @Column
+    @Column(name = "user_id")
     int userId;
 
     public Todo() {
