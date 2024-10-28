@@ -14,17 +14,13 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@RequestMapping("/todos")
 public class TodoController {
 
     @Autowired
     private TodoService todoService;
 
-    @RequestMapping(value = "/todos", method = RequestMethod.OPTIONS)
-    public ResponseEntity<Void> handleOptions() {
-        System.out.println("handle todos");
-        return ResponseEntity.ok().build();
-    }
-    @GetMapping("/todos")
+    @GetMapping
     public ResponseEntity<Map<String, List<Todo>>> getTodos() {
         System.out.println("handle getTodos");
         List<Todo> todos = todoService.getAllTodos();
@@ -35,7 +31,7 @@ public class TodoController {
 
         return ResponseEntity.ok(response);
     }
-    @PostMapping("/todos")
+    @PostMapping
     public ResponseEntity<Todo> createTodo(@RequestBody Todo newTodo) {
         System.out.println("handle posttodos");
         newTodo.setCompleted(false); // 기본값 설정
@@ -46,7 +42,7 @@ public class TodoController {
         System.out.println(savedTodo);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedTodo); // 저장된 Todo 반환
     }
-    @PatchMapping("/todos/{todoId}")
+    @PatchMapping("/{todoId}")
     public ResponseEntity<Map<String, Boolean>> updateTodoPatch(
             @PathVariable int todoId
             ) {
@@ -56,7 +52,7 @@ public class TodoController {
         update.put("complete", new Boolean(true));
         return ResponseEntity.ok().body(update);
     }
-    @DeleteMapping("/todos/{todoID}")
+    @DeleteMapping("/{todoID}")
     public ResponseEntity<Void> deleteTodo( @PathVariable int todoID
     ) {
         System.out.println("delete path");
