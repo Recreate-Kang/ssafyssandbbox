@@ -13,5 +13,4 @@ public class TodoListResponse {
     public TodoListResponse(List<TodoDto> todos){
         this.todos = todos;
     }
-
 }
