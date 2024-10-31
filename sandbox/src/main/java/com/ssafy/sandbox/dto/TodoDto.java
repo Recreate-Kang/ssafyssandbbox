@@ -3,6 +3,8 @@ package com.ssafy.sandbox.dto;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name="todos")
 @Data
@@ -16,7 +18,7 @@ public class TodoDto {
     @Column
     boolean completed;
     @Column(name = "created_at", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    String createdAt;
+    LocalDateTime createdAt;
     @Column(name = "user_id")
     int userId;
 
