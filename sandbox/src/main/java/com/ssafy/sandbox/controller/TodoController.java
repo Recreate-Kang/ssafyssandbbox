@@ -2,6 +2,7 @@ package com.ssafy.sandbox.controller;
 
 
 import com.ssafy.sandbox.dto.TodoDto;
+import com.ssafy.sandbox.dto.TodoListResponse;
 import com.ssafy.sandbox.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,10 +20,8 @@ public class TodoController {
     private TodoService todoService;
 
     @GetMapping
-    public ResponseEntity<Map<String, List<TodoDto>>> getTodos() {
-        List<TodoDto> todoDtos = todoService.getAllTodos();
-        Map<String, List<TodoDto>> response = new HashMap<>();
-        response.put("todos", todoDtos);
+    public ResponseEntity<TodoListResponse> getTodos() {
+        TodoListResponse response = todoService.getAllTodos();
         return ResponseEntity.ok().body(response);
     }
     @PostMapping
@@ -32,8 +31,7 @@ public class TodoController {
     }
     @PatchMapping("/{todoId}")
     public ResponseEntity<Map<String, Boolean>> toggleTodo(@PathVariable int todoId) {
-        todoService.toggleTodo(todoId); // 서비스 메서드 호출
-        Map<String, Boolean> update = Map.of("complete", Boolean.TRUE);
+        Map<String, Boolean> update = todoService.toggleTodo(todoId);
         return ResponseEntity.ok().body(update);
     }
     @DeleteMapping("/{todoID}")
