@@ -1,4 +1,4 @@
-package com.ssafy.sandbox.dto;
+package com.ssafy.sandbox.vo;
 
 import jakarta.persistence.*;
 import lombok.Data;

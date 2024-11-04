@@ -1,8 +1,8 @@
 package com.ssafy.sandbox.service;
 
-import com.ssafy.sandbox.dto.TodoDto;
+import com.ssafy.sandbox.vo.TodoDto;
 import com.ssafy.sandbox.dto.TodoListResponse;
-import com.ssafy.sandbox.respository.TodoRepository;
+import com.ssafy.sandbox.repository.TodoRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

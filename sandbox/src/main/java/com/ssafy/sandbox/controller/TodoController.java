@@ -1,7 +1,7 @@
 package com.ssafy.sandbox.controller;
 
 
-import com.ssafy.sandbox.dto.TodoDto;
+import com.ssafy.sandbox.vo.TodoDto;
 import com.ssafy.sandbox.dto.TodoListResponse;
 import com.ssafy.sandbox.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;

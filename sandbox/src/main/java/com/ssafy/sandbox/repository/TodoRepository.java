@@ -1,12 +1,10 @@
-package com.ssafy.sandbox.respository;
+package com.ssafy.sandbox.repository;
 
-import com.ssafy.sandbox.dto.TodoDto;
+import com.ssafy.sandbox.vo.TodoDto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-
-import java.util.List;
 
 public interface TodoRepository extends JpaRepository<TodoDto, Integer> {
 
