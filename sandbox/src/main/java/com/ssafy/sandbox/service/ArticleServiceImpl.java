@@ -12,8 +12,12 @@ import java.util.List;
 @Service
 public class ArticleServiceImpl implements ArticleService {
 
+    private final ArticleRepository articleRepository;
+
     @Autowired
-    ArticleRepository articleRepository;
+    ArticleServiceImpl(ArticleRepository articleRepository){
+        this.articleRepository = articleRepository;
+    }
 
     @Override
     public void makeArticle(ArticleRequest newArticle) {

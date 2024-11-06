@@ -13,8 +13,12 @@ import java.util.Map;
 @RequestMapping("/articles")
 public class ArticleController {
 
+    private final ArticleService articleService;
+
     @Autowired
-    ArticleService articleService;
+    ArticleController(ArticleService articleService){
+        this.articleService =articleService;
+    }
 
     @PostMapping("/make")
     public ResponseEntity<Void> makeAllArticle(@RequestBody ArticleRequest articles) {
