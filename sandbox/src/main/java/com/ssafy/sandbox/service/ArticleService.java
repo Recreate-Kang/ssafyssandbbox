@@ -1,14 +1,12 @@
 package com.ssafy.sandbox.service;
 
+import com.ssafy.sandbox.dto.ArticleListResponse;
 import com.ssafy.sandbox.dto.ArticleRequest;
-import com.ssafy.sandbox.vo.Article;
 
-import java.util.List;
+import java.util.Map;
 
 public interface ArticleService {
     void makeArticle(ArticleRequest newArticle);
 
-    List<Article> articlePaging(int start, int pageable);
-
-    Integer totalPage(int size);
+    ArticleListResponse articlePaging(Map<String, String> typePaging, int pageable);
 }

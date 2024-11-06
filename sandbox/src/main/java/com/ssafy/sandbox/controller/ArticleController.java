@@ -24,7 +24,6 @@ public class ArticleController {
     public ResponseEntity<Void> makeAllArticle(@RequestBody ArticleRequest articles) {
         System.out.println("makeAllArticle");
         articleService.makeArticle(articles);
-
         return ResponseEntity.noContent().build();
     }
 
@@ -33,21 +32,7 @@ public class ArticleController {
             @PathVariable String type,
             @RequestParam Integer size,
             @RequestParam Map<String, String> typePaging) {
-        System.out.println("getPagingArticle" + "/size=" + size + "&page=" + typePaging);
-        int start;
-        if (type.equals("offset")) {
-            start = size * Integer.parseInt(typePaging.get("page"));
-        } else {
-            start = Integer.parseInt(typePaging.get("cursorId"));
-
-        }
-        ArticleListResponse response = new ArticleListResponse();
-        response.setArticles(articleService.articlePaging(start, size));
-        if (type.equals("offset")) {
-            response.setTotalPage(articleService.totalPage(size));
-        } else if (type.equals("cursor") && !response.getArticles().isEmpty()) {
-            response.setLastId(response.getArticles().get(response.getArticles().size() - 1).getId());
-        }
+        ArticleListResponse response = articleService.articlePaging(typePaging, size);
         return ResponseEntity.ok().body(response);
     }
 }
