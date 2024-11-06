@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name="todos")
 @Data
-public class TodoDto {
+public class Todo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +22,7 @@ public class TodoDto {
     @Column(name = "user_id")
     int userId;
 
-    public TodoDto() {
+    public Todo() {
 
     }
 }

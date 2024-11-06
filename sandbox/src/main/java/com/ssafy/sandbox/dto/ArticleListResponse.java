@@ -1,11 +1,15 @@
 package com.ssafy.sandbox.dto;
 
-import com.ssafy.sandbox.vo.ArticleDto;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.ssafy.sandbox.vo.Article;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ArticleListResponse {
-    private List<ArticleDto> articles;
+    private List<Article> articles;
+    private int totalPage;
+    private int lastId;
 }

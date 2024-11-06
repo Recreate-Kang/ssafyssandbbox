@@ -12,7 +12,7 @@ import java.time.ZonedDateTime;
 @Entity
 @Getter
 @Table(name="article")
-public class ArticleDto {
+public class Article {
 
     @Id
     @Column(name = "ID", columnDefinition = "AUTO_INCREMENT")

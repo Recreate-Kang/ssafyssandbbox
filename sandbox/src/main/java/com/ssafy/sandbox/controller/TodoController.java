@@ -1,7 +1,7 @@
 package com.ssafy.sandbox.controller;
 
 
-import com.ssafy.sandbox.vo.TodoDto;
+import com.ssafy.sandbox.vo.Todo;
 import com.ssafy.sandbox.dto.TodoListResponse;
 import com.ssafy.sandbox.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +23,8 @@ public class TodoController {
         return ResponseEntity.ok().body(response);
     }
     @PostMapping
-    public ResponseEntity<TodoDto> createTodo(@RequestBody TodoDto newTodoDto) {
-        TodoDto savedTodoDto = todoService.createTodos(newTodoDto); // 서비스에서 저장 메서드 호출//content와 필드명 일치해서 이미들어가있음
+    public ResponseEntity<Todo> createTodo(@RequestBody Todo newTodoDto) {
+        Todo savedTodoDto = todoService.createTodos(newTodoDto); // 서비스에서 저장 메서드 호출//content와 필드명 일치해서 이미들어가있음
         return ResponseEntity.ok().body(savedTodoDto); // 저장된 TodoDto 반환
     }
     @PatchMapping("/{todoId}")

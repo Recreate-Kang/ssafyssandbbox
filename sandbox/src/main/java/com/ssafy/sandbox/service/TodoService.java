@@ -1,6 +1,6 @@
 package com.ssafy.sandbox.service;
 
-import com.ssafy.sandbox.vo.TodoDto;
+import com.ssafy.sandbox.vo.Todo;
 import com.ssafy.sandbox.dto.TodoListResponse;
 import com.ssafy.sandbox.repository.TodoRepository;
 import jakarta.transaction.Transactional;
@@ -17,7 +17,7 @@ public class TodoService {
     public TodoListResponse getAllTodos() {
         return new TodoListResponse(todoRepository.findAll());
     }
-    public TodoDto createTodos(TodoDto newTodoDto) {
+    public Todo createTodos(Todo newTodoDto) {
         newTodoDto.setUserId(1); // 사용자 ID 설정 (예시)
         return todoRepository.save(newTodoDto); // 저장 메서드 호출
     }

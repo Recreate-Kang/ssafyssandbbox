@@ -2,7 +2,7 @@ package com.ssafy.sandbox.service;
 
 import com.ssafy.sandbox.dto.ArticleRequest;
 import com.ssafy.sandbox.repository.ArticleRepository;
-import com.ssafy.sandbox.vo.ArticleDto;
+import com.ssafy.sandbox.vo.Article;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Limit;
 import org.springframework.stereotype.Service;
@@ -21,12 +21,12 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public List<ArticleDto> articlePaging(int start, int pageable) {
+    public List<Article> articlePaging(int start, int pageable) {
         return articleRepository.findByIdGreaterThan(start, Limit.of(pageable));
     }
 
     @Override
     public Integer totalPage(int size) {
-        return (int) Math.ceil((double) articleRepository.count() / size);
+        return ((int) (articleRepository.count() / size));
     }
 }
