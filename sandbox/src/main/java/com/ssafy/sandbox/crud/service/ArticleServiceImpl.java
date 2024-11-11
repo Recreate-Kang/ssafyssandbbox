@@ -1,14 +1,12 @@
-package com.ssafy.sandbox.service;
+package com.ssafy.sandbox.crud.service;
 
-import com.ssafy.sandbox.dto.ArticleListResponse;
-import com.ssafy.sandbox.dto.ArticleRequest;
-import com.ssafy.sandbox.repository.ArticleRepository;
-import com.ssafy.sandbox.vo.Article;
+import com.ssafy.sandbox.crud.dto.ArticleListResponse;
+import com.ssafy.sandbox.crud.dto.ArticleRequest;
+import com.ssafy.sandbox.crud.repository.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Limit;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Map;
 
 @Service

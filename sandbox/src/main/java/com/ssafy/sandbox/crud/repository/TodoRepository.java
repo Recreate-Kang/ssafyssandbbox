@@ -1,6 +1,6 @@
-package com.ssafy.sandbox.repository;
+package com.ssafy.sandbox.crud.repository;
 
-import com.ssafy.sandbox.vo.Todo;
+import com.ssafy.sandbox.crud.vo.Todo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

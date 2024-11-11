@@ -1,6 +1,6 @@
-package com.ssafy.sandbox.repository;
+package com.ssafy.sandbox.crud.repository;
 
-import com.ssafy.sandbox.vo.Article;
+import com.ssafy.sandbox.crud.vo.Article;
 import org.springframework.data.domain.Limit;
 import org.springframework.data.jpa.repository.JpaRepository;
 

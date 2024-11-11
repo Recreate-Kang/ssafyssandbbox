@@ -1,4 +1,4 @@
-package com.ssafy.sandbox.vo;
+package com.ssafy.sandbox.crud.vo;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

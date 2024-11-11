@@ -1,8 +1,8 @@
-package com.ssafy.sandbox.controller;
+package com.ssafy.sandbox.crud.controller;
 
-import com.ssafy.sandbox.dto.ArticleListResponse;
-import com.ssafy.sandbox.dto.ArticleRequest;
-import com.ssafy.sandbox.service.ArticleService;
+import com.ssafy.sandbox.crud.dto.ArticleListResponse;
+import com.ssafy.sandbox.crud.dto.ArticleRequest;
+import com.ssafy.sandbox.crud.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

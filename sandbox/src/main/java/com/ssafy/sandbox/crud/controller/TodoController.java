@@ -1,9 +1,9 @@
-package com.ssafy.sandbox.controller;
+package com.ssafy.sandbox.crud.controller;
 
 
-import com.ssafy.sandbox.vo.Todo;
-import com.ssafy.sandbox.dto.TodoListResponse;
-import com.ssafy.sandbox.service.TodoService;
+import com.ssafy.sandbox.crud.vo.Todo;
+import com.ssafy.sandbox.crud.dto.TodoListResponse;
+import com.ssafy.sandbox.crud.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

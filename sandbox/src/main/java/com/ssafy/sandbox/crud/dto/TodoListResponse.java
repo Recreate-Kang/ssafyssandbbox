@@ -1,6 +1,6 @@
-package com.ssafy.sandbox.dto;
+package com.ssafy.sandbox.crud.dto;
 
-import com.ssafy.sandbox.vo.Todo;
+import com.ssafy.sandbox.crud.vo.Todo;
 import lombok.Getter;
 import lombok.Setter;
 

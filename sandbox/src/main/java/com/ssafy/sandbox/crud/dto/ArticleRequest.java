@@ -1,6 +1,6 @@
-package com.ssafy.sandbox.dto;
+package com.ssafy.sandbox.crud.dto;
 
-import com.ssafy.sandbox.vo.Article;
+import com.ssafy.sandbox.crud.vo.Article;
 import lombok.Data;
 
 import java.util.List;

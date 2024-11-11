@@ -1,7 +1,7 @@
-package com.ssafy.sandbox.service;
+package com.ssafy.sandbox.crud.service;
 
-import com.ssafy.sandbox.dto.ArticleListResponse;
-import com.ssafy.sandbox.dto.ArticleRequest;
+import com.ssafy.sandbox.crud.dto.ArticleListResponse;
+import com.ssafy.sandbox.crud.dto.ArticleRequest;
 
 import java.util.Map;
 
