@@ -2,6 +2,7 @@ package com.ssafy.sandbox.smtp.service;
 
 import com.ssafy.sandbox.smtp.dto.AuthInfo;
 import com.ssafy.sandbox.smtp.dto.UserEmail;
+import com.ssafy.sandbox.smtp.dto.responseVerification;
 import com.ssafy.sandbox.smtp.entity.VerifyCodeCache;
 import com.ssafy.sandbox.smtp.repository.SmtpRepository;
 import jakarta.mail.MessagingException;
@@ -18,7 +19,7 @@ public class SmtpServiceImpl implements SmtpService {
     private final JavaMailSender mailSender;
     //private final SmtpRepository smtpRepository;
     private final VerifyCodeCache verifyCodeCache;
-    @Value("${MAIL_ADDRESS}")
+    @Value("${SPRING_SMTP_EMAIL}")
     private String senderEmail;
 
     @Autowired
@@ -33,6 +34,13 @@ public class SmtpServiceImpl implements SmtpService {
         String code = String.valueOf(num.toString().hashCode());
         return code.substring(0, 6);
     }
+    private MimeMessage setMail(AuthInfo authInfo) throws MessagingException {
+        MimeMessage message = mailSender.createMimeMessage();
+        message.setFrom(senderEmail);
+        message.setRecipient(MimeMessage.RecipientType.TO, new InternetAddress(authInfo.getEmail()));
+        message.setText(authInfo.getAuthCode(), "UTF-8","html");
+        return message;
+    }
 
     public void sendAuthMail(UserEmail userEmail) throws MessagingException {
         String AuthNumber = createAuthNum();
@@ -42,11 +50,9 @@ public class SmtpServiceImpl implements SmtpService {
         mailSender.send(verificaitonMessage);
     }
 
-    private MimeMessage setMail(AuthInfo authInfo) throws MessagingException {
-        MimeMessage message = mailSender.createMimeMessage();
-        message.setFrom(senderEmail);
-        message.setRecipient(MimeMessage.RecipientType.TO, new InternetAddress(authInfo.getEmail()));
-        message.setText(authInfo.getAuthCode(), "UTF-8","html");
-        return message;
+    @Override
+    public responseVerification verifyEmail(AuthInfo authInfo) {
+        if(verifyCodeCache.doVerify(authInfo)) return responseVerification.pass();
+        else return responseVerification.fail();
     }
 }

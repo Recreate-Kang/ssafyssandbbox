@@ -5,16 +5,16 @@ import lombok.Data;
 @Data
 public class responseSendCode {
 
-    boolean isSuccess;
+    Boolean isOk;
 
     public static responseSendCode pass(){
         responseSendCode res = new responseSendCode();
-        res.isSuccess = true;
+        res.isOk = true;
         return res;
     }
     public  static responseSendCode fail(){
         responseSendCode res = new responseSendCode();
-        res.isSuccess = false;
+        res.isOk = false;
         return res;
     }
 }

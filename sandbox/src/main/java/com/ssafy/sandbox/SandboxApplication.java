@@ -9,7 +9,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 public class SandboxApplication {
 
 	public static void main(String[] args) {
-		System.getenv().forEach((key, value) -> System.out.println(key + " = " + value));
 		SpringApplication.run(SandboxApplication.class, args);
 	}
 

@@ -30,14 +30,14 @@ public class VerifyCodeCache {
         deleteExpiredVerifications();
         VerificationEntity verificationEntity = verifications.get(authInfo.getAuthCode());
         if (verificationEntity == null) return false;
-        if (verificationEntity.getExpirationTime().isAfter(LocalDateTime.now()))return false;
+        if (verificationEntity.getExpirationTime().isBefore(LocalDateTime.now()))return false;
         if (!verificationEntity.getAuthInfo().getEmail().equals(authInfo.getEmail())) return false;
         if (!verificationEntity.getAuthInfo().getAuthCode().equals(authInfo.getAuthCode())) return false;
         return true;
     }
 
     public void deleteExpiredVerifications() {
-        while (!expireQueue.isEmpty() && !expireQueue.peek().getExpirationTime().isBefore(LocalDateTime.now())) {
+        while (!expireQueue.isEmpty() && !expireQueue.peek().getExpirationTime().isAfter(LocalDateTime.now())) {
             verifications.remove(expireQueue.poll().getAuthInfo().getAuthCode());
         }
     }
