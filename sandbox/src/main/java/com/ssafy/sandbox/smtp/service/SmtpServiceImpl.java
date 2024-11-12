@@ -18,7 +18,7 @@ public class SmtpServiceImpl implements SmtpService {
     private final JavaMailSender mailSender;
     //private final SmtpRepository smtpRepository;
     private final VerifyCodeCache verifyCodeCache;
-    @Value("${SPRING_SMTP_EMAIL}")
+    @Value("${MAIL_ADDRESS}")
     private String senderEmail;
 
     @Autowired

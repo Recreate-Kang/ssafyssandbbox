@@ -12,9 +12,12 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: {user email}
-    password:
+    username: ${SPRING_SMTP_EMAIL}
+    password: ${SPRING_SMTP_PASSWORD}
     properties:
       mail:
-        smtp.auth: true
-        smtp.starttls.enable: true
+        smtp:
+          auth: true
+          starttls.enable: true
+  profiles:
+    active: env

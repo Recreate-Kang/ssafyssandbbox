@@ -14,18 +14,19 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/email")
 public class SmtpController {
 
-    private SmtpService smtpService;
+    private final SmtpService smtpService;
 
-    @Autowired
     SmtpController(SmtpService smtpService) {
     this.smtpService = smtpService;
     }
 
     @PostMapping
     public ResponseEntity<responseSendCode> sendAutheSmtp(@RequestBody UserEmail email) {
+        System.out.println("askldjfalkje");
         try {
             smtpService.sendAuthMail(email);
         }catch (Exception e) {
+            e.printStackTrace();
         }
         return ResponseEntity.ok().body(responseSendCode.pass());
     }

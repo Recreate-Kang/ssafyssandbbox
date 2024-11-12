@@ -17,6 +17,10 @@ public class TodoController {
     @Autowired
     private TodoService todoService;
 
+    TodoController(TodoService todoService){
+        this.todoService = todoService;
+    }
+
     @GetMapping
     public ResponseEntity<TodoListResponse> getTodos() {
         TodoListResponse response = todoService.getAllTodos();
