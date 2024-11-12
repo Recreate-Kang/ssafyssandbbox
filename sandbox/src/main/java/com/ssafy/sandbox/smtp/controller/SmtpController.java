@@ -1,10 +1,7 @@
 package com.ssafy.sandbox.smtp.controller;
 
 
-import com.ssafy.sandbox.smtp.dto.AuthInfo;
-import com.ssafy.sandbox.smtp.dto.UserEmail;
-import com.ssafy.sandbox.smtp.dto.responseSendCode;
-import com.ssafy.sandbox.smtp.dto.responseVerification;
+import com.ssafy.sandbox.smtp.dto.*;
 import com.ssafy.sandbox.smtp.service.SmtpService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,12 +17,8 @@ public class SmtpController {
     }
 
     @PostMapping
-    public ResponseEntity<responseSendCode> sendAutheSmtp(@RequestBody UserEmail email) {
-        try {
-            smtpService.sendAuthMail(email);
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
+    public ResponseEntity<responseSendCode> sendAutheSmtp(@RequestBody UserEmail email) throws Exception {
+        smtpService.sendAuthMail(email);
         return ResponseEntity.ok().body(responseSendCode.pass());
     }
     @PostMapping("/authentication")

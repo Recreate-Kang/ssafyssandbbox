@@ -6,7 +6,6 @@ import com.ssafy.sandbox.smtp.dto.responseVerification;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -15,12 +14,10 @@ import org.springframework.stereotype.Service;
 public class SmtpServiceImpl implements SmtpService {
 
     private final JavaMailSender mailSender;
-    //private final SmtpRepository smtpRepository;
     private final VerifyCodeCache verifyCodeCache;
     @Value("${SPRING_SMTP_EMAIL}")
     private String senderEmail;
 
-    @Autowired
     public SmtpServiceImpl(JavaMailSender mailSender, VerifyCodeCache verifyCodeCache) {
         this.mailSender = mailSender;
         //this.smtpRepository = smtpRepository;
@@ -40,6 +37,7 @@ public class SmtpServiceImpl implements SmtpService {
         return message;
     }
 
+    @Override
     public void sendAuthMail(UserEmail userEmail) throws MessagingException {
         String AuthNumber = createAuthNum();
         AuthInfo authInfo = new AuthInfo(userEmail, AuthNumber);
