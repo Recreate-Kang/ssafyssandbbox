@@ -1,8 +1,10 @@
 package com.ssafy.sandbox.smtp.controller;
 
 
-import com.ssafy.sandbox.smtp.dto.responseAuthentication;
-import com.ssafy.sandbox.smtp.entity.TodoListResponse;
+import com.ssafy.sandbox.smtp.dto.AuthInfo;
+import com.ssafy.sandbox.smtp.dto.UserEmail;
+import com.ssafy.sandbox.smtp.dto.responseSendCode;
+import com.ssafy.sandbox.smtp.entity.VerificationEntity;
 import com.ssafy.sandbox.smtp.service.SmtpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,20 +17,20 @@ public class SmtpController {
     private SmtpService smtpService;
 
     @Autowired
-    SmtpController(SmtpController smtpController) {
-        this.smtpService = smtpService;
+    SmtpController(SmtpService smtpService) {
+    this.smtpService = smtpService;
     }
 
     @PostMapping
-    public ResponseEntity<responseAuthentication> sendAutheSmtp(@RequestBody String email) {
+    public ResponseEntity<responseSendCode> sendAutheSmtp(@RequestBody UserEmail email) {
         try {
             smtpService.sendAuthMail(email);
-        }catch (Exception e){
+        }catch (Exception e) {
         }
-        return ResponseEntity.ok().body(responseAuthentication.pass());
+        return ResponseEntity.ok().body(responseSendCode.pass());
     }
     @PostMapping("authentication")
-    public ResponseEntity<TodoListResponse> verifyAuthSmtp(@RequestBody String authentication, @RequestBody String email) {
+    public ResponseEntity<VerificationEntity> verifyAuthSmtp(@RequestBody AuthInfo authInfo) {
 
         return ResponseEntity.ok().build();
     }
