@@ -3,8 +3,6 @@ package com.ssafy.sandbox.smtp.service;
 import com.ssafy.sandbox.smtp.dto.AuthInfo;
 import com.ssafy.sandbox.smtp.dto.UserEmail;
 import com.ssafy.sandbox.smtp.dto.responseVerification;
-import com.ssafy.sandbox.smtp.entity.VerifyCodeCache;
-import com.ssafy.sandbox.smtp.repository.SmtpRepository;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;

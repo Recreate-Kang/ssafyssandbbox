@@ -1,7 +1,7 @@
-package com.ssafy.sandbox.smtp.entity;
+package com.ssafy.sandbox.smtp.service;
 
 import com.ssafy.sandbox.smtp.dto.AuthInfo;
-import lombok.RequiredArgsConstructor;
+import com.ssafy.sandbox.smtp.entity.VerificationEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
