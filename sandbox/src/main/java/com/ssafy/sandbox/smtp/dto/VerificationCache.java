@@ -1,6 +1,5 @@
-package com.ssafy.sandbox.smtp.entity;
+package com.ssafy.sandbox.smtp.dto;
 
-import com.ssafy.sandbox.smtp.dto.AuthInfo;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,12 +8,18 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-public class VerificationEntity {
+public class VerificationCache {
     private final AuthInfo authInfo;
     private final LocalDateTime expirationTime;
 
-    public VerificationEntity(AuthInfo authInfo) {
+    public VerificationCache(AuthInfo authInfo) {
         this.authInfo = authInfo;
         this.expirationTime = LocalDateTime.now().plusMinutes(5);
+    }
+    public String getAuthCode(){
+        return this.authInfo.getAuthCode();
+    }
+    public String getEmail(){
+        return this.authInfo.getEmail();
     }
 }
