@@ -15,6 +15,6 @@ public class VerificationEntity {
 
     public VerificationEntity(AuthInfo authInfo) {
         this.authInfo = authInfo;
-        this.expirationTime = LocalDateTime.now().plusMinutes(30);
+        this.expirationTime = LocalDateTime.now().plusMinutes(5);
     }
 }
