@@ -15,24 +15,24 @@ public class VerifyCodeCache {
     private final Queue<VerificationEntity> expireQueue;
 
     @Autowired
-    public VerifyCodeCache(HashMap<String, VerificationEntity> verifications,
-                           Queue<VerificationEntity> expireQueue) {
+    public VerifyCodeCache(HashMap<String, VerificationEntity> verifications, Queue<VerificationEntity> expireQueue) {
         this.verifications = verifications;
         this.expireQueue = expireQueue;
     }
+
     public void CreateVerification(AuthInfo authInfo) {
         deleteExpiredVerifications();
         VerificationEntity newVerificiationInfo = new VerificationEntity(authInfo);
         verifications.put(newVerificiationInfo.getAuthInfo().getAuthCode(), newVerificiationInfo);
         expireQueue.add(newVerificiationInfo);
     }
+
     public boolean doVerify(AuthInfo authInfo) {
         deleteExpiredVerifications();
         VerificationEntity verificationEntity = verifications.get(authInfo.getAuthCode());
         if (verificationEntity == null) return false;
-        if (verificationEntity.getExpirationTime().isBefore(LocalDateTime.now()))return false;
         if (!verificationEntity.getAuthInfo().getEmail().equals(authInfo.getEmail())) return false;
-        if (!verificationEntity.getAuthInfo().getAuthCode().equals(authInfo.getAuthCode())) return false;
+        if (verificationEntity.getAuthInfo().getAuthCode().equals(authInfo.getAuthCode())) return false;
         return true;
     }
 
