@@ -10,6 +10,6 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ArticleListResponse {
     private List<Article> articles;
-    private Integer totalPage=null;
-    private Integer lastId=null;
+    private Integer totalPage = null;
+    private Integer lastId = null;
 }

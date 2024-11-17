@@ -3,7 +3,6 @@ package com.ssafy.sandbox.crud.controller;
 import com.ssafy.sandbox.crud.dto.ArticleListResponse;
 import com.ssafy.sandbox.crud.dto.ArticleRequest;
 import com.ssafy.sandbox.crud.service.ArticleService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,8 +14,8 @@ public class ArticleController {
 
     private final ArticleService articleService;
 
-    ArticleController(ArticleService articleService){
-        this.articleService =articleService;
+    ArticleController(ArticleService articleService) {
+        this.articleService = articleService;
     }
 
     @PostMapping("/make")

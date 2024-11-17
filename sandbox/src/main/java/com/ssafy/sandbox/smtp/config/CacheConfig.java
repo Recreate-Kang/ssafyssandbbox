@@ -1,8 +1,7 @@
 package com.ssafy.sandbox.smtp.config;
-import com.ssafy.sandbox.smtp.entity.VerificationEntity;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -12,12 +11,12 @@ import java.util.Queue;
 public class CacheConfig {
 
     @Bean
-    public HashMap<String, VerificationEntity> verifications() {
+    public HashMap<String, com.ssafy.sandbox.smtp.dto.VerificationDTO> verifications() {
         return new HashMap<>();
     }
 
     @Bean
-    public Queue<VerificationEntity> expireQueue() {
+    public Queue<com.ssafy.sandbox.smtp.dto.VerificationDTO> expireQueue() {
         return new LinkedList<>();
     }
 }

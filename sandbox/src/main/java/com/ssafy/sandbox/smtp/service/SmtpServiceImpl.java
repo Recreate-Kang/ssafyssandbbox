@@ -2,7 +2,6 @@ package com.ssafy.sandbox.smtp.service;
 
 import com.ssafy.sandbox.smtp.dto.AuthInfo;
 import com.ssafy.sandbox.smtp.dto.UserEmail;
-import com.ssafy.sandbox.smtp.dto.responseVerification;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
@@ -24,16 +23,17 @@ public class SmtpServiceImpl implements SmtpService {
         this.verifyCodeCache = verifyCodeCache;
     }
 
-    public String createAuthNum(){
+    public String createAuthNum() {
         Double num = Math.random();
         String code = String.valueOf(num.toString().hashCode());
         return code.substring(0, 6);
     }
+
     private MimeMessage setMail(AuthInfo authInfo) throws MessagingException {
         MimeMessage message = mailSender.createMimeMessage();
         message.setFrom(senderEmail);
         message.setRecipient(MimeMessage.RecipientType.TO, new InternetAddress(authInfo.getEmail()));
-        message.setText(authInfo.getAuthCode(), "UTF-8","html");
+        message.setText(authInfo.getAuthCode(), "UTF-8", "html");
         return message;
     }
 
@@ -47,8 +47,8 @@ public class SmtpServiceImpl implements SmtpService {
     }
 
     @Override
-    public responseVerification verifyEmail(AuthInfo authInfo) {
-        if(verifyCodeCache.doVerify(authInfo)) return responseVerification.pass();
-        else return responseVerification.fail();
+    public com.ssafy.sandbox.smtp.dto.ResponseVerification verifyEmail(AuthInfo authInfo) {
+        if (verifyCodeCache.doVerify(authInfo)) return com.ssafy.sandbox.smtp.dto.ResponseVerification.pass();
+        else return com.ssafy.sandbox.smtp.dto.ResponseVerification.fail();
     }
 }

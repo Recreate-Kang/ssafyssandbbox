@@ -11,15 +11,15 @@ import java.time.ZonedDateTime;
 
 @Entity
 @Getter
-@Table(name="article")
+@Table(name = "article")
 public class Article {
 
     @Id
     @Column(name = "ID", columnDefinition = "AUTO_INCREMENT")
     private int id;
     @Setter
-    @Column(name ="ARTICLE", columnDefinition = "NOT NULL")
+    @Column(name = "ARTICLE", columnDefinition = "NOT NULL")
     private String title;
-    @Column(name ="CREATED_AT", columnDefinition = "DEFAULT CURRENT_TIMESTAMP")
+    @Column(name = "CREATED_AT", columnDefinition = "DEFAULT CURRENT_TIMESTAMP")
     private ZonedDateTime createdAt;
 }

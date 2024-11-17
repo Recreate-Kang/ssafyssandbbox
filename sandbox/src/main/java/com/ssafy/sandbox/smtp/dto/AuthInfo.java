@@ -1,7 +1,6 @@
 package com.ssafy.sandbox.smtp.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,7 +11,7 @@ public class AuthInfo {
     String authCode;
     String email;
 
-    public AuthInfo(UserEmail email, String authNumber){
+    public AuthInfo(UserEmail email, String authNumber) {
         this.email = email.getEmail();
         this.authCode = authNumber;
     }

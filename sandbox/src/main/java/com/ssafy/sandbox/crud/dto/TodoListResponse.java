@@ -11,7 +11,7 @@ import java.util.List;
 public class TodoListResponse {
     private List<Todo> todos;
 
-    public TodoListResponse(List<Todo> todos){
+    public TodoListResponse(List<Todo> todos) {
         this.todos = todos;
     }
 }
