@@ -1,6 +1,6 @@
-package com.ssafy.sandbox.dto;
+package com.ssafy.sandbox.crud.dto;
 
-import com.ssafy.sandbox.vo.Todo;
+import com.ssafy.sandbox.crud.vo.Todo;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,7 +11,7 @@ import java.util.List;
 public class TodoListResponse {
     private List<Todo> todos;
 
-    public TodoListResponse(List<Todo> todos){
+    public TodoListResponse(List<Todo> todos) {
         this.todos = todos;
     }
 }

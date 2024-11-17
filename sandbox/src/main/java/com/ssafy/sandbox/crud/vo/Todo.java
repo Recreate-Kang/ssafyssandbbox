@@ -1,4 +1,4 @@
-package com.ssafy.sandbox.vo;
+package com.ssafy.sandbox.crud.vo;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -6,7 +6,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name="todos")
+@Table(name = "todos")
 @Data
 public class Todo {
 

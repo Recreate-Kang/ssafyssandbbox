@@ -1,7 +1,7 @@
-package com.ssafy.sandbox.dto;
+package com.ssafy.sandbox.crud.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.ssafy.sandbox.vo.Article;
+import com.ssafy.sandbox.crud.vo.Article;
 import lombok.Data;
 
 import java.util.List;
@@ -10,6 +10,6 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ArticleListResponse {
     private List<Article> articles;
-    private Integer totalPage=null;
-    private Integer lastId=null;
+    private Integer totalPage = null;
+    private Integer lastId = null;
 }
